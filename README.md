@@ -2,7 +2,7 @@
 Upload files to RDF4J in parallel
 
 ```bash
-java -jar rdf4j-uploader-1.0.0.jar \
+./scripts/run-uploader.sh \
   --endpoint http://localhost:8080/rdf4j-server \
   --repository myrepo \
   --folder /data/rdf \
@@ -11,6 +11,8 @@ java -jar rdf4j-uploader-1.0.0.jar \
   --isolation-level read-committed \
   --resume
 ```
+
+The script rebuilds the runnable jar when `pom.xml` or `src/` is newer than the last jar, then forwards all arguments to `java -jar`.
 
 Supported isolation levels: `none`, `read-uncommitted`, `read-committed`, `snapshot-read`, `snapshot`, `serializable`.
 If omitted, uploads use `read-committed`.
